@@ -504,7 +504,7 @@ build_source_deb(){
     tar xzf ${NEWTAR}
     cd ${NAME}-${VERSION}-${RELEASE}
     cp -ap build-ps/debian/ .
-    dch -D unstable --force-distribution -v "${VERSION}-${RELEASE}-1" "Update to new upstream release Percona Server ${VERSION}-${RELEASE}-2"
+    dch -D unstable --force-distribution -v "${VERSION}-${RELEASE}-2" "Update to new upstream release Percona Server ${VERSION}-${RELEASE}-2"
     dpkg-buildpackage -S
     #
     cd ${WORKDIR}
@@ -560,9 +560,11 @@ build_deb(){
 
     dpkg-source -x ${DSC}
     #mv percona-server-source-5.6.tar.gz ${DIRNAME}/debian
-    cd ${DIRNAME}
+    
+#    cd ${DIRNAME}
+    cd percona-server-5.6-5.6.48-88.0 
     #
-    dch -b -m -D "$DEBIAN_VERSION" --force-distribution -v "${VERSION}-${RELEASE}-1.${DEBIAN_VERSION}" 'Update distribution'
+    dch -b -m -D "$DEBIAN_VERSION" --force-distribution -v "${VERSION}-${RELEASE}-2.${DEBIAN_VERSION}" 'Update distribution'
     #
     #
     if [ ${ARCH} != "x86_64" ]; then
